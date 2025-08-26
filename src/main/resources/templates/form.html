@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Car</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="app-wrapper">
+    <div class="app-header">
+        <h1>🚗 Car Management System</h1>
+    </div>
+
+    <div class="nav-section">
+        <div class="breadcrumb">
+            <a href="/" class="breadcrumb-item">Car List</a>
+            <span class="breadcrumb-separator">›</span>
+            <span class="breadcrumb-item active">Add Car</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Add New Vehicle</h2>
+                <p>Enter the vehicle details to register a new car in the system</p>
+            </div>
+
+            <div class="form-container">
+                <form class="car-form" th:action="@{/add}" th:object="${car}" method="post">
+                    <div class="form-grid">
+                        <!-- Basic Information Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                                Basic Information
+                            </div>
+
+                            <div class="form-group">
+                                <label for="licensePlateNumber" class="form-label required">
+                                    License Plate Number
+                                </label>
+                                <input type="text"
+                                       id="licensePlateNumber"
+                                       th:field="*{licensePlateNumber}"
+                                       class="form-input"
+                                       placeholder="e.g., ABC-123"
+                                       required />
+                                <span class="form-help">Enter the vehicle's license plate number</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="make" class="form-label required">Make</label>
+                                    <input type="text"
+                                           id="make"
+                                           th:field="*{make}"
+                                           class="form-input"
+                                           placeholder="e.g., Toyota"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="model" class="form-label required">Model</label>
+                                    <input type="text"
+                                           id="model"
+                                           th:field="*{model}"
+                                           class="form-input"
+                                           placeholder="e.g., Camry"
+                                           required />
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="year" class="form-label required">Year</label>
+                                    <input type="number"
+                                           id="year"
+                                           th:field="*{year}"
+                                           class="form-input"
+                                           placeholder="2023"
+                                           min="1900"
+                                           max="2025"
+                                           required />
+                                </div>
+                                <div class="form-group">
+                                    <label for="color" class="form-label required">Color</label>
+                                    <input type="text"
+                                           id="color"
+                                           th:field="*{color}"
+                                           class="form-input"
+                                           placeholder="e.g., Blue"
+                                           required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vehicle Specifications Section -->
+                        <div class="form-section">
+                            <div class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                                </svg>
+                                Vehicle Specifications
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bodyType" class="form-label required">Body Type</label>
+                                <select id="bodyType" th:field="*{bodyType}" class="form-select" required>
+                                    <option value="">Choose body type...</option>
+                                    <option value="Sedan">🚙 Sedan</option>
+                                    <option value="SUV">🚐 SUV</option>
+                                    <option value="Hatchback">🚗 Hatchback</option>
+                                    <option value="Coupe">🏎️ Coupe</option>
+                                    <option value="Convertible">🚗 Convertible</option>
+                                    <option value="Wagon">🚛 Wagon</option>
+                                    <option value="Pickup">🛻 Pickup Truck</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="engineType" class="form-label required">Engine Type</label>
+                                <select id="engineType" th:field="*{engineType}" class="form-select" required>
+                                    <option value="">Choose engine type...</option>
+                                    <option value="Gasoline">⛽ Gasoline</option>
+                                    <option value="Diesel">🛢️ Diesel</option>
+                                    <option value="Electric">🔋 Electric</option>
+                                    <option value="Hybrid">🔋⛽ Hybrid</option>
+                                    <option value="Plug-in Hybrid">🔌 Plug-in Hybrid</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="transmission" class="form-label required">Transmission</label>
+                                <select id="transmission" th:field="*{transmission}" class="form-select" required>
+                                    <option value="">Choose transmission...</option>
+                                    <option value="Automatic">⚙️ Automatic</option>
+                                    <option value="Manual">🎛️ Manual</option>
+                                    <option value="CVT">🔄 CVT (Continuously Variable)</option>
+                                    <option value="Semi-Automatic">⚙️🎛️ Semi-Automatic</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="history.back()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15,18 9,12 15,6"></polyline>
+                            </svg>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20,6 9,17 4,12"></polyline>
+                            </svg>
+                            Save Car
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Quick Actions Panel -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-cards">
+                        <div class="action-card">
+                            <div class="action-icon">📋</div>
+                            <div class="action-content">
+                                <h4>View All Cars</h4>
+                                <p>See complete vehicle inventory</p>
+                                <a href="/" class="action-link">View List →</a>
+                            </div>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-icon">📊</div>
+                            <div class="action-content">
+                                <h4>Vehicle Reports</h4>
+                                <p>Generate detailed reports</p>
+                                <a href="#" class="action-link">Generate →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Enhanced form styles */
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    .breadcrumb-item {
+        color: var(--secondary-slate-light);
+        text-decoration: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+    }
+
+    .breadcrumb-item:hover {
+        background-color: var(--neutral-100);
+        color: var(--primary-blue);
+    }
+
+    .breadcrumb-item.active {
+        background-color: var(--primary-blue);
+        color: var(--white);
+        font-weight: 500;
+    }
+
+    .breadcrumb-separator {
+        color: var(--neutral-300);
+        font-size: 16px;
+    }
+
+    .form-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 32px;
+        align-items: start;
+    }
+
+    .car-form {
+        background: var(--white);
+        border-radius: 16px;
+        border: 1px solid var(--neutral-200);
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-section {
+        padding: 32px;
+        border-bottom: 1px solid var(--neutral-200);
+    }
+
+    .form-section:last-child {
+        border-bottom: none;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--neutral-800);
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--primary-blue);
+    }
+
+    .section-title svg {
+        color: var(--primary-blue);
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--neutral-800);
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+    .form-label.required::after {
+        content: ' *';
+        color: var(--danger);
+        font-weight: bold;
+    }
+
+    .form-input,
+    .form-select {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid var(--neutral-300);
+        border-radius: 10px;
+        font-size: 14px;
+        font-family: inherit;
+        background-color: var(--white);
+        color: var(--neutral-700);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        background-color: var(--neutral-50);
+        transform: translateY(-1px);
+    }
+
+    .form-input:hover,
+    .form-select:hover {
+        border-color: var(--secondary-slate);
+    }
+
+    .form-help {
+        display: block;
+        margin-top: 6px;
+        font-size: 12px;
+        color: var(--secondary-slate-light);
+    }
+
+    .form-actions {
+        padding: 24px 32px;
+        background: var(--neutral-50);
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        border-top: 1px solid var(--neutral-200);
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        font-family: inherit;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-hover) 100%);
+        color: var(--white);
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--primary-blue-hover) 0%, var(--primary-blue-dark) 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+        background: var(--white);
+        color: var(--neutral-700);
+        border: 2px solid var(--neutral-300);
+    }
+
+    .btn-secondary:hover {
+        background: var(--neutral-50);
+        border-color: var(--neutral-400);
+        transform: translateY(-1px);
+    }
+
+    .quick-actions {
+        background: var(--white);
+        border-radius: 16px;
+        border: 1px solid var(--neutral-200);
+        padding: 24px;
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+    }
+
+    .quick-actions h3 {
+        margin: 0 0 20px 0;
+        color: var(--neutral-800);
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .action-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .action-card {
+        display: flex;
+        gap: 12px;
+        padding: 16px;
+        border: 1px solid var(--neutral-200);
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .action-card:hover {
+        border-color: var(--primary-blue);
+        background: var(--neutral-50);
+        transform: translateY(-1px);
+    }
+
+    .action-icon {
+        font-size: 24px;
+    }
+
+    .action-content h4 {
+        margin: 0 0 4px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--neutral-800);
+    }
+
+    .action-content p {
+        margin: 0 0 8px 0;
+        font-size: 12px;
+        color: var(--secondary-slate-light);
+    }
+
+    .action-link {
+        font-size: 12px;
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .action-link:hover {
+        text-decoration: underline;
+    }
+
+    /* Form validation styles */
+    .form-input:invalid,
+    .form-select:invalid {
+        border-color: var(--danger);
+    }
+
+    .form-input:valid,
+    .form-select:valid {
+        border-color: var(--success);
+    }
+
+    /* Loading state for form submission */
+    .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    /* Responsive design */
+    @media (max-width: 1024px) {
+        .form-container {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .quick-actions {
+            position: static;
+        }
+
+        .action-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px 16px;
+        }
+
+        .form-section {
+            padding: 24px 20px;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .form-actions {
+            padding: 20px;
+            flex-direction: column-reverse;
+        }
+
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .action-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .section-title {
+            font-size: 16px;
+        }
+    }
+
+    /* Form animation effects */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .form-section {
+        animation: slideIn 0.6s ease-out;
+    }
+
+    .form-section:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .quick-actions {
+        animation: slideIn 0.6s ease-out;
+        animation-delay: 0.2s;
+    }
+
+    /* Custom select arrow */
+    .form-select {
+        appearance: none;
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23475569" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg>');
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        background-size: 16px;
+        padding-right: 40px;
+    }
+
+    /* Improved focus indicators */
+    .form-input:focus-visible,
+    .form-select:focus-visible,
+    .btn:focus-visible {
+        outline: 2px solid var(--primary-blue);
+        outline-offset: 2px;
+    }
