@@ -57,14 +57,14 @@ public class CarController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit.html")
+    @GetMapping("/edit")
     public String edit(@RequestParam int id, Model model) {
         Car c = carRepository.findById(id).get();
         if (c != null) {
             model.addAttribute("car", c);
             model.addAttribute("types", new String[]{"Gasoline", "Diesel", "Electric", "Hybrid"});
             model.addAttribute("sizes", new String[]{"Automatic", "Manual"});
-            return "edit.html";
+            return "edit";
         }
         return "redirect:/";
     }

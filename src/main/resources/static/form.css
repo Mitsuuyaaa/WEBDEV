@@ -1,94 +1,83 @@
-/* form.css */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
-* {
+/* ========== General Layout ========== */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f5f7fa;
+    color: #333;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    min-height: 100vh;
+}
+
+/* ========== Form Container ========== */
+form {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 form h1 {
     text-align: center;
-    margin-bottom: 25px;
-    color: #ffffff;
-    font-size: 2rem;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
 }
 
-
-form {
-    background: #ffffff10;
-    backdrop-filter: blur(10px);
-    padding: 30px;
-    border-radius: 15px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    color: #f0f0f0;
-}
-
+/* ========== Labels and Inputs ========== */
 label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #2c3e50;
 }
 
 input, select {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid #444;
-    background: #1e1e2f;
-    color: #fff;
-    font-size: 0.95rem;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
     outline: none;
-    transition: 0.3s;
+    transition: border 0.2s;
 }
 
 input:focus, select:focus {
-    border-color: #4cc9f0;
-    box-shadow: 0 0 5px #4cc9f0;
+    border-color: #3498db;
 }
 
+/* ========== Buttons ========== */
 button {
-    width: 100%;
-    padding: 14px;
+    padding: 10px 14px;
     border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #4cc9f0, #4361ee);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: 6px;
+    background-color: #3498db;
+    color: white;
+    font-size: 15px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    transition: background 0.3s;
+    font-weight: 500;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+    background-color: #2980b9;
 }
 
 a {
-    display: inline-block;
-    margin-top: 15px;
     text-align: center;
-    width: 100%;
-    color: #f0f0f0;
+    display: inline-block;
+    margin-top: 10px;
+    color: #e74c3c;
     text-decoration: none;
-    transition: color 0.3s;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 a:hover {
-    color: #4cc9f0;
+    text-decoration: underline;
 }
