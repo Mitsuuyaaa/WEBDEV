@@ -12,7 +12,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.Salazar</groupId>
+    <groupId>com.Montipalco</groupId>
     <artifactId>Cars</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>student</name>

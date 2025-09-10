@@ -1,4 +1,4 @@
-package com.Salazar;
+package com.Montipalco;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
