@@ -1,42 +1,38 @@
-package com.Montipalco;
+package com.Salazar.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-@Entity
-public class Car {
+public class CarDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    int id;
 
+    @NotBlank(message = "Make cannot be empty")
     String make;
+
+    @Min(1886)
+    @Max(2025)
     int year;
+
+    @NotBlank(message = "License Plate cannot be empty")
     String licensePlateNumber;
+
+    @NotBlank(message = "Pick a color")
     String color;
+
     String bodyType;
     String engineType;
     String transmission;
 
-    public Car(Integer id, String make, int year, String licensePlateNumber, String color, String bodyType, String engineType, String transmission) {
-        this.id = id;
-        this.make = make;
-        this.year = year;
-        this.licensePlateNumber = licensePlateNumber;
-        this.color = color;
-        this.bodyType = bodyType;
-        this.engineType = engineType;
-        this.transmission = transmission;
-    }
-
-    public Car(){}
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Integer id) {this.id = id;}
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getMake() {
         return make;
     }
@@ -79,5 +75,4 @@ public class Car {
     public void setTransmission(String transmission) {
         this.transmission = transmission;
     }
-
 }

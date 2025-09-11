@@ -15,20 +15,24 @@
   <input type="hidden" th:field="*{id}"/>
 
   <label for="make">Make:</label>
-  <input id="make" type="text" th:field="*{make}" required/>
+  <input id="make" type="text" th:field="*{make}"/>
+  <div th:if="${#fields.hasErrors('make')}" th:errors="*{make}" class="error"></div>
 
   <label for="year">Year:</label>
-  <input id="year" type="number" th:field="*{year}" min="1900" max="2100" required/>
+  <input id="year" type="number" th:field="*{year}"/>
+  <div th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="error"></div>
 
   <label for="licensePlateNumber">License Plate Number:</label>
-  <input id="licensePlateNumber" type="text" th:field="*{licensePlateNumber}" required/>
+  <input id="licensePlateNumber" type="text" th:field="*{licensePlateNumber}"/>
+  <div th:if="${#fields.hasErrors('licensePlateNumber')}" th:errors="*{licensePlateNumber}" class="error"></div>
 
   <label for="color">Color:</label>
-  <input id="color" type="text" th:field="*{color}" required/>
+  <input id="color" type="text" th:field="*{color}"/>
+  <div th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="error"></div>
 
   <label for="bodyType">Body Type:</label>
   <select id="bodyType" th:field="*{bodyType}">
-    <option  value="" disabled>-- Select Body Type --</option>
+    <option value="" disabled>-- Select Body Type --</option>
     <option value="Sedan">Sedan</option>
     <option value="SUV">SUV</option>
     <option value="Hatchback">Hatchback</option>

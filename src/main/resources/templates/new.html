@@ -8,67 +8,51 @@
 </head>
 <body>
 
-<main class="form-page">
-    <form th:action="@{/save}" th:object="${car}" method="post" class="car-form">
-        <h1>Add a New Car 🚗</h1>
+<form th:action="@{/save}" th:object="${car}" method="post">
+    <h1>Add New Car</h1>
 
-        <!-- Input Groups -->
-        <div class="form-group">
-            <label for="make">Make</label>
-            <input id="make" type="text" th:field="*{make}" required/>
-        </div>
+    <label for="make">Make:</label>
+    <input id="make" type="text" th:field="*{make}"/>
+    <div th:if="${#fields.hasErrors('make')}" th:errors="*{make}" class="error"></div>
 
-        <div class="form-group">
-            <label for="year">Year</label>
-            <input id="year" type="number" th:field="*{year}" min="1900" max="2100" required/>
-        </div>
+    <label for="year">Year:</label>
+    <input id="year" type="number" th:field="*{year}"/>
+    <div th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="error"></div>
 
-        <div class="form-group">
-            <label for="licensePlateNumber">License Plate Number</label>
-            <input id="licensePlateNumber" type="text" th:field="*{licensePlateNumber}" required/>
-        </div>
+    <label for="licensePlateNumber">License Plate Number:</label>
+    <input id="licensePlateNumber" type="text" th:field="*{licensePlateNumber}"/>
+    <div th:if="${#fields.hasErrors('licensePlateNumber')}" th:errors="*{licensePlateNumber}" class="error"></div>
 
-        <div class="form-group">
-            <label for="color">Color</label>
-            <input id="color" type="text" th:field="*{color}" required/>
-        </div>
+    <label for="color">Color:</label>
+    <input id="color" type="text" th:field="*{color}"/>
+    <div th:if="${#fields.hasErrors('color')}" th:errors="*{color}" class="error"></div>
 
-        <div class="form-group">
-            <label for="bodyType">Body Type</label>
-            <select id="bodyType" th:field="*{bodyType}">
-                <option value="" disabled selected>-- Select Body Type --</option>
-                <option value="Sedan">Sedan</option>
-                <option value="SUV">SUV</option>
-                <option value="Hatchback">Hatchback</option>
-                <option value="Pickup">Pickup</option>
-                <option value="Coupe">Coupe</option>
-                <option value="Convertible">Convertible</option>
-            </select>
-        </div>
+    <label for="bodyType">Body Type:</label>
+    <select id="bodyType" th:field="*{bodyType}">
+        <option value="" disabled selected>-- Select Body Type --</option>
+        <option value="Sedan">Sedan</option>
+        <option value="SUV">SUV</option>
+        <option value="Hatchback">Hatchback</option>
+        <option value="Pickup">Pickup</option>
+        <option value="Coupe">Coupe</option>
+        <option value="Convertible">Convertible</option>
+    </select>
 
-        <div class="form-group">
-            <label for="engineType">Engine Type</label>
-            <select id="engineType" th:field="*{engineType}">
-                <option value="" disabled selected>-- Select Engine Type --</option>
-                <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
-            </select>
-        </div>
+    <label for="engineType">Engine Type:</label>
+    <select id="engineType" th:field="*{engineType}">
+        <option value="" disabled selected>-- Select Engine Type --</option>
+        <option th:each="t : ${types}" th:value="${t}" th:text="${t}"></option>
+    </select>
 
-        <div class="form-group">
-            <label for="transmission">Transmission</label>
-            <select id="transmission" th:field="*{transmission}">
-                <option value="" disabled selected>-- Select Transmission --</option>
-                <option th:each="t : ${sizes}" th:value="${t}" th:text="${t}"></option>
-            </select>
-        </div>
+    <label for="transmission">Transmission:</label>
+    <select id="transmission" th:field="*{transmission}">
+        <option value="" disabled selected>-- Select Transmission --</option>
+        <option th:each="t : ${sizes}" th:value="${t}" th:text="${t}"></option>
+    </select>
 
-        <!-- Actions -->
-        <div class="form-actions">
-            <button type="submit">💾 Save Car</button>
-            <a href="/" class="cancel-link">Cancel</a>
-        </div>
-    </form>
-</main>
+    <button type="submit">Save Car</button>
+    <a href="/">Cancel</a>
+</form>
 
 </body>
 </html>
