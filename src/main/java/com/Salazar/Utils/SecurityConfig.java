@@ -8,10 +8,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 public class SecurityConfig {
-    CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsService customUserDetailsService;
+
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.customUserDetailsService = userDetailsService;
     }
@@ -33,8 +35,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers( "/register", "/css/**").permitAll()
-                        .requestMatchers("/login").anonymous() // 🚀 only for non-authenticated users
+                        .requestMatchers("/register", "/css/**").permitAll()
+                        .requestMatchers("/login").anonymous()
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
@@ -46,9 +48,14 @@ public class SecurityConfig {
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
+                )
+                // ✅ CSRF enabled & token exposed to frontend (for forms or AJAX)
+                .csrf(csrf -> csrf
+                                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        // Optional: disable CSRF for API or specific endpoints
+                        //.ignoringRequestMatchers("/api/**")
                 );
 
         return http.build();
     }
 }
-
