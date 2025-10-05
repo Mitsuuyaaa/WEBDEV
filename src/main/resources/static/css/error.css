@@ -1,0 +1,62 @@
+/* ========== Error Page Styles ========== */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7); /* Violet gradient */
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Error container */
+.container {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    border: 2px solid #6c5ce7; /* Violet border */
+}
+
+/* Error title */
+.container h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Error message */
+.container p {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Link button */
+.container a {
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient */
+    color: white;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.container a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(142, 68, 173, 0.3);
+    background: linear-gradient(90deg, #9b59b6, #8e44ad); /* Slight hover effect */
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

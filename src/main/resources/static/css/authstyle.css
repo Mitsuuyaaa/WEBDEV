@@ -1,0 +1,102 @@
+/* ========== Auth Pages (Login & Register) ========== */
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Auth form container */
+.login-form {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    border: 2px solid #6c5ce7;
+}
+
+/* Title */
+.login-form h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #8e44ad, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Input fields */
+.login-form label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #f8fafc;
+    transition: all 0.3s;
+}
+
+.login-form input:focus {
+    border-color: #8e44ad;
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(142, 68, 173, 0.4);
+    outline: none;
+}
+
+/* Buttons */
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #8e44ad, #9b59b6);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(142, 68, 173, 0.3);
+    background: linear-gradient(90deg, #9b59b6, #8e44ad);
+}
+
+/* Links */
+.login-form a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #8e44ad;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.login-form a:hover {
+    color: #9b59b6;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

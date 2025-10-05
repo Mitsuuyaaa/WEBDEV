@@ -17,6 +17,7 @@ public class CarService {
         Car car = new Car();
         car.setMake(carDTO.getMake());
         car.setYear(carDTO.getYear());
+        car.setModel(carDTO.getModel());
         car.setLicensePlateNumber(carDTO.getLicensePlateNumber());
         car.setColor(carDTO.getColor());
 

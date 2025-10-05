@@ -1,7 +1,7 @@
 /* ========== General Layout ========== */
 body {
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #d9f0ff, #2980b9); /* Light to dark blue blend */
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7); /* Violet gradient */
     color: #333;
     margin: 0;
     padding: 0;
@@ -18,19 +18,20 @@ form {
     background: #ffffff;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     gap: 18px;
     animation: fadeIn 0.6s ease-in-out;
+    border: 2px solid #6c5ce7; /* Violet border */
 }
 
+/* Form title */
 form h1 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 10px;
-    color: #1e3c72;
-    background: linear-gradient(90deg, #3498db, #1e3c72);
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -53,9 +54,9 @@ input, select {
 }
 
 input:focus, select:focus {
-    border-color: #3498db;
+    border-color: #8e44ad; /* Violet focus border */
     background-color: #ffffff;
-    box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 0 6px rgba(142, 68, 173, 0.4); /* Violet glow */
 }
 
 /* ========== Buttons ========== */
@@ -63,7 +64,7 @@ button {
     padding: 12px 16px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(90deg, #3498db, #1e3c72);
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient */
     color: white;
     font-size: 15px;
     cursor: pointer;
@@ -73,14 +74,15 @@ button {
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(30, 60, 114, 0.3);
+    box-shadow: 0 6px 14px rgba(142, 68, 173, 0.3); /* Violet shadow */
 }
 
+/* ========== Links ========== */
 a {
     text-align: center;
     display: inline-block;
     margin-top: 10px;
-    color: #1e3c72;
+    color: #8e44ad; /* Violet link */
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -88,7 +90,7 @@ a {
 }
 
 a:hover {
-    color: #3498db;
+    color: #9b59b6; /* Darker violet on hover */
     text-decoration: underline;
 }
 

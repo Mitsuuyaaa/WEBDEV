@@ -1,10 +1,12 @@
 /* ========== General Layout ========== */
 body {
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #d9f0ff, #2980b9); /* Light → Dark blue gradient */
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7); /* Violet gradient */
     color: #333;
     margin: 0;
     padding: 0;
+    display: flex;
+    min-height: 100vh;
 }
 
 /* Main container */
@@ -15,8 +17,9 @@ main {
     padding: 25px;
     background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
     animation: fadeIn 0.6s ease-in-out;
+    border: 2px solid #6c5ce7; /* Violet border */
 }
 
 /* ========== Top Bar ========== */
@@ -35,7 +38,7 @@ main {
     text-align: center;
     margin-bottom: 20px;
     font-weight: 700;
-    background: linear-gradient(90deg, #3498db, #1e3c72);
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient text */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -62,16 +65,16 @@ main {
 }
 
 .search-form input[type="text"]:focus {
-    border-color: #3498db;
+    border-color: #8e44ad; /* Violet focus border */
     background: #ffffff;
-    box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 0 6px rgba(142, 68, 173, 0.4); /* Violet glow */
 }
 
 .search-form button {
     padding: 10px 16px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(90deg, #3498db, #1e3c72);
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient */
     color: white;
     font-size: 14px;
     cursor: pointer;
@@ -81,7 +84,7 @@ main {
 
 .search-form button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(30, 60, 114, 0.3);
+    box-shadow: 0 6px 14px rgba(142, 68, 173, 0.3); /* Violet shadow */
 }
 
 /* ========== Buttons ========== */
@@ -104,12 +107,12 @@ main {
 }
 
 .edit {
-    color: #2980b9;
+    color: #8e44ad; /* Violet */
     font-weight: 600;
 }
 
 .edit:hover {
-    color: #1f6faa;
+    color: #9b59b6; /* Darker violet on hover */
 }
 
 .delete {
@@ -120,6 +123,29 @@ main {
 
 .delete:hover {
     color: #c0392b;
+}
+
+/* ========== Logout Button ========== */
+.logout-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logout {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.logout:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(192, 57, 43, 0.4);
 }
 
 /* ========== Table ========== */
@@ -136,7 +162,7 @@ table {
 }
 
 thead {
-    background: linear-gradient(90deg, #3498db, #1e3c72);
+    background: linear-gradient(90deg, #8e44ad, #9b59b6); /* Violet gradient */
     color: white;
 }
 

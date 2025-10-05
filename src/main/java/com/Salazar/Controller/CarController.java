@@ -1,7 +1,6 @@
 package com.Salazar.Controller;
 
 import com.Salazar.DTO.CarDTO;
-import com.Salazar.Exemptions.ResourceNotFoundException;
 import com.Salazar.Repository.CarRepository;
 import com.Salazar.Class.Car;
 import com.Salazar.Service.CarService;
@@ -32,11 +31,16 @@ public class CarController {
         if (search.isEmpty()){
             cars = carRepository.findAll();// ✅ only keep this
         }else{
-            cars = carRepository.findByMakeContainingIgnoreCaseOrLicensePlateNumberContainingIgnoreCaseOrColorContainingIgnoreCaseOrBodyTypeContainingIgnoreCaseOrEngineTypeContainingIgnoreCaseOrTransmissionContainingIgnoreCase(search,search,search, search, search, search);
+            cars = carRepository.findByMakeContainingIgnoreCaseOrModelContainingIgnoreCaseOrLicensePlateNumberContainingIgnoreCaseOrColorContainingIgnoreCaseOrBodyTypeContainingIgnoreCaseOrEngineTypeContainingIgnoreCaseOrTransmissionContainingIgnoreCase(search,search,search,search, search, search, search);
         }
 
+//        AppUser user = (AppUser) session.getAttribute("user");
+//        if(user == null) {
+//            return "redirect:/logout";
+//        }
         model.addAttribute("cars", cars);
         model.addAttribute("search", search);
+//        model.addAttribute("activeMenu", "home");
         cars.forEach(car -> {
             System.out.println(car.getMake());
         });
@@ -45,13 +49,20 @@ public class CarController {
 
     @GetMapping("/delete")
     public String deleteCar(@RequestParam int id, HttpSession session) {
-
+//        AppUser user = (AppUser) session.getAttribute("user");
+//        if(user == null) {
+//            return "redirect:/logout";
+//        }
         carRepository.deleteById(id);
         return "redirect:/";
     }
+
     @GetMapping("/new")
     public String add(Model model, HttpSession session) {
-
+//        AppUser user = (AppUser) session.getAttribute("user");
+//        if(user == null) {
+//            return "redirect:/logout";
+//        }
         CarDTO carDTO = new CarDTO();
         model.addAttribute("car", carDTO);
         model.addAttribute("activeMenu", "new");
@@ -63,6 +74,10 @@ public class CarController {
 
     @PostMapping("/save")
     public String save(@ModelAttribute("car") @Valid CarDTO carDTO, BindingResult bindingResult, HttpSession session, Model model) {
+//        AppUser user = (AppUser) session.getAttribute("user");
+//        if(user == null) {
+//            return "redirect:/logout";
+//        }
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("car", carDTO);
@@ -74,6 +89,7 @@ public class CarController {
 
         Car car = new Car();
         car.setMake(carDTO.getMake());
+        car.setModel(carDTO.getModel());
         car.setYear(carDTO.getYear());
         car.setLicensePlateNumber(carDTO.getLicensePlateNumber());
         car.setColor(carDTO.getColor());
@@ -85,13 +101,18 @@ public class CarController {
     }
 
     @GetMapping("/edit")
-    public String edit(@RequestParam int id, Model model, HttpSession session) {
+    public String edit(@RequestParam int id, Model model,HttpSession session) {
+//        AppUser user = (AppUser) session.getAttribute("user");
+//        if(user == null) {
+//            return "redirect:/logout";
+//        }
 
         Car c = carRepository.findById(id).orElseThrow(() -> new RuntimeException("Car not found"));
 
         CarDTO carDTO = new CarDTO();
         carDTO.setId(c.getId());
         carDTO.setMake(c.getMake());
+        carDTO.setModel(c.getModel());
         carDTO.setYear(c.getYear());
         carDTO.setLicensePlateNumber(c.getLicensePlateNumber());
         carDTO.setColor(c.getColor());
@@ -106,9 +127,12 @@ public class CarController {
         return "edit";
     }
 
-
     @PostMapping("/update")
     public String update(@ModelAttribute("car") @Valid CarDTO carDTO, BindingResult bindingResult, HttpSession session, Model model) {
+//        AppUser user = (AppUser) session.getAttribute("user");
+//        if(user == null) {
+//            return "redirect:/logout";
+//        }
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("car", carDTO);
@@ -121,6 +145,7 @@ public class CarController {
         Car car = carRepository.findById(carDTO.getId())
                 .orElseThrow(() -> new RuntimeException("Car not found"));
         car.setMake(carDTO.getMake());
+        car.setModel(carDTO.getModel());
         car.setYear(carDTO.getYear());
         car.setLicensePlateNumber(carDTO.getLicensePlateNumber());
         car.setColor(carDTO.getColor());
@@ -131,4 +156,11 @@ public class CarController {
         carRepository.save(car);
         return "redirect:/";
     }
+
+//    @GetMapping("/car/{id}")
+//    public String view(@PathVariable int id, Model model) {
+//        Car c = carRepository.findById(id).get();
+//        model.addAttribute("car", c);
+//        return "view"; // create a simple view.html
+//    }
 }

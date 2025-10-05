@@ -3,7 +3,6 @@ package com.Salazar.DTO;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 
 public class CarDTO {
 
@@ -11,6 +10,10 @@ public class CarDTO {
 
     @NotBlank(message = "Make cannot be empty")
     String make;
+
+
+    @NotBlank(message = "Model is required")
+    String model;
 
     @Min(1886)
     @Max(2025)
@@ -32,13 +35,21 @@ public class CarDTO {
     public void setId(int id) {
         this.id = id;
     }
-
     public String getMake() {
         return make;
     }
     public void setMake(String make) {
         this.make = make;
     }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public int getYear() {
         return year;
     }
