@@ -8,12 +8,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
 
 @Configuration
 public class SecurityConfig {
-    private final CustomUserDetailsService customUserDetailsService;
-
+    CustomUserDetailsService customUserDetailsService;
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
         this.customUserDetailsService = userDetailsService;
     }
@@ -34,28 +33,21 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/css/**").permitAll()
-                        .requestMatchers("/login").anonymous()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/login", "/register", "api/**").permitAll() // public
+                        .anyRequest().authenticated()             // secure everything else
                 )
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/", true)
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/", true) // redirect after login
                         .permitAll()
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                )
-                // ✅ CSRF enabled & token exposed to frontend (for forms or AJAX)
-                .csrf(csrf -> csrf
-                                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        // Optional: disable CSRF for API or specific endpoints
-                        //.ignoringRequestMatchers("/api/**")
-                );
-
+                        .permitAll());
         return http.build();
     }
 }
