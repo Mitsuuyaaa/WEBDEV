@@ -1,4 +1,4 @@
-package com.Salazar.Controller;
+package com.Salazar.Controller.Api;
 
 import com.Salazar.Class.Car;
 import com.Salazar.DTO.CarDTO;
@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class CarRestController {
