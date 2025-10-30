@@ -9,6 +9,10 @@
 <form th:action="@{/login}" method="post" class="login-form">
   <h2>Login</h2>
 
+  <div th:if="${error}" style="color:red; margin-bottom:10px;">
+    <p th:text="${error}"></p>
+  </div>
+
   <div>
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required />
@@ -20,7 +24,7 @@
   </div>
 
   <button type="submit">Login</button>
-  <a th:href="@{/register}">Don't have an account? Register</a>
+  <a th:href="@{auth/register}">Don't have an account? Register</a>
 </form>
 </body>
 </html>
