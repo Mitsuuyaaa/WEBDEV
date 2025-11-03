@@ -1,0 +1,12 @@
+package com.Salazar.Midterm.Exam.dto;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
+public record ProductDTO(
+        @NotBlank String name,
+        @NotBlank String description,
+        @Min(1) int stock,
+        @NotBlank String unit,
+        @Min(1) double price
+) {}
