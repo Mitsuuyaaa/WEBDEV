@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "*") // Allow all origins (frontend access)
+@CrossOrigin
 public class ProductController {
 
     private final ProductService service;
