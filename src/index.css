@@ -1,0 +1,51 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f4f7fa;  /* Soft light background */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #333;  /* Dark gray text for readability */
+  line-height: 1.6;
+  min-height: 100vh;  /* Ensure the body takes full height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Links Styling */
+a {
+  color: #007bff;  /* Sky Blue for links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #87CEEB;  /* Sky Blue color */
+  border-radius: 10px;
+  border: 2px solid #1b1b22;  /* Dark border for contrast */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1b1b22;
+}
+
+/* General Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}

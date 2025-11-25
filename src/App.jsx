@@ -1,5 +1,6 @@
 // src/App.jsx
 import ProfileList from "./components/ProfileList";
+import ProfileCard from "./components/ProfileCard";
 import StepCounter from "./components/StepCounter";
 import ProductInfo from "./components/ProductInfo";
 import "./App.css"; // Make sure to import CSS
@@ -26,18 +27,19 @@ function App() {
 
       <ProfileList />
 
+      {/* Single StepCounter with new label */}
       <StepCounter />
 
       <ProductInfo
-        name="Laptop"
-        price={999}
-        details="A fast laptop with 16GB RAM and 512GB SSD."
+        name="Smartphone"
+        price={799}
+        details="Latest smartphone with a 6.7-inch OLED display, 5G connectivity, and 128GB storage."
       />
 
       <ProductInfo
-        name="PC Setup"
-        price={1500}
-        details="Full gaming setup with RGB lights, high-end GPU, and dual monitors."
+        name="Wireless Headphones"
+        price={249}
+        details="Noise-cancelling wireless headphones with up to 30 hours of battery life and Bluetooth 5.0."
       />
     </div>
   );
